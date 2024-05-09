@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grading System</title>
+</head>
+
+<body>
+    <label>question 1</label>
+    <input type="text" id="num1"><br>
+    <label>question 2</label>
+    <input type="text" id="num2"><br>
+    <label>question 3</label>
+    <input type="text" id="num3"><br>
+    <label>question 4</label>
+    <input type="text" id="num4"><br>
+    <label>question 5</label>
+    <input type="text" id="num5"><br>
+    <button onclick="calculateGrade()">Calculate Grade</button>
+    <p id="result"></p>
+    <p id="grade"></p>
+
+    <script>
+        function calculateGrade() {
+            const val1 = document.getElementById("num1").value;
+            const val2 = document.getElementById("num2").value;
+            const val3 = document.getElementById("num3").value;
+            const val4 = document.getElementById("num4").value;
+            const val5 = document.getElementById("num5").value;
+
+            const ans1 = val1 ? 1 : 0;
+            const ans2 = val2 ? 1 : 0;
+            const ans3 = val3 ? 1 : 0;
+            const ans4 = val4 ? 1 : 0;
+            const ans5 = val5 ? 1 : 0;
+
+            const totalMarks = ans1 + ans2 + ans3 + ans4 + ans5;
+            const average = totalMarks / 5;
+
+            document.getElementById("result").textContent = `Total: ${totalMarks} / 5`;
+            document.getElementById("grade").textContent = `Grade: ${getLetterGrade(average)}`;
+        }
+
+        function getLetterGrade(average) {
+            if (average >= 0.8 && average <= 1) {
+                return "A";
+            } else if (average >= 0.75 && average < 0.8) {
+                return "B";
+            } else if (average >= 0.7 && average < 0.75) {
+                return "C";
+            } else {
+                return "F";
+            }
+        }
+    </script>
+</body>
+
+</html>
